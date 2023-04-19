@@ -1,12 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, json, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  json,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 const EmpAdd = () => {
   // const {Emp} = useParams();
-  const location=useLocation()
-//   console.log(location.state)
-
+  const location = useLocation();
+  //   console.log(location.state)
 
   const [id, idchange] = useState();
   const [firstName, firstNamechange] = useState();
@@ -18,14 +23,11 @@ const EmpAdd = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     const empdata = { id, firstName, email, lastName };
-    console.log(empdata);
 
     axios
       .post("http://localhost:8080/createEmployee", empdata)
       .then((response) => response.data)
       .then((res) => {
-        console.log(res);
-        console.log(empdata);
         navigate("/");
       });
   };
@@ -34,16 +36,18 @@ const EmpAdd = () => {
       <div className="row">
         <div className="offset-lg-3 col-lg-6">
           <form className="container" onSubmit={handlesubmit}>
-            <div className="card" style={{ textAlign: "left" }}>
+            <div className="card mt-20" style={{ textAlign: "left" }}>
               <div className="card-title">
-                <h2>Employee add</h2>
+                <h2 className="text-2xl font-semibold mt-4 ml-6">
+                  Add Employee{" "}
+                </h2>
               </div>
-              <div className="card-body">
+              <div className="card-body ">
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="form-group">
-                      <label>ID</label>
                       <input
+                        type="hidden"
                         // value={location.state.id}
                         disabled="disabled"
                         className="form-control"
@@ -54,7 +58,8 @@ const EmpAdd = () => {
                   <div className="col-lg-12">
                     <div className="form-group">
                       <label>firstName</label>
-                      <input type="text"
+                      <input
+                        type="text"
                         required
                         // value={location.state.firstName}
                         onChange={(e) => firstNamechange(e.target.value)}
@@ -66,7 +71,9 @@ const EmpAdd = () => {
                   <div className="col-lg-12">
                     <div className="form-group">
                       <label>lastname</label>
-                      <input type="text"
+                      <input
+                        type="text"
+                        required
                         // value={location.state.lastName}
                         onChange={(e) => lastNamechange(e.target.value)}
                         className="form-control"
@@ -76,7 +83,9 @@ const EmpAdd = () => {
                   <div className="col-lg-12">
                     <div className="form-group">
                       <label>Email</label>
-                      <input type="text"
+                      <input
+                        type="text"
+                        required
                         // value={location.state.email}
                         onChange={(e) => emailchange(e.target.value)}
                         className="form-control"
@@ -86,10 +95,12 @@ const EmpAdd = () => {
 
                   <div className="col-lg-12">
                     <div className="form-group">
-                      <button type="submit">Save</button>
-                      <Link to="/" className="btn btn-danger">
-                        Back
-                      </Link>
+                      <button
+                        type="submit"
+                        className="px-4 rounded-lg text-white bg-blue-500 p-1 m-8 mb-0 "
+                      >
+                        Save
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -98,12 +109,8 @@ const EmpAdd = () => {
           </form>
         </div>
       </div>
-      {JSON.stringify(location.state)}
     </div>
   );
 };
 
 export default EmpAdd;
-
-
-//   basss xzaaaaallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
