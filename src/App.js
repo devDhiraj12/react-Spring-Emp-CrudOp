@@ -4,11 +4,12 @@ import './App.css';
 import Home from './Home';
 import EmpEdit from './EmpEdit';
 import EmpAdd from './EmpAdd';
+import Home1 from './Navbar';
 
 function App() {
   return (
     <div >
-     {/* <Home/> */}
+     <Home1/>
      {/* <AddEditEmp/> */}
      <BrowserRouter>
       <Routes>

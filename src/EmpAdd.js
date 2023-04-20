@@ -36,7 +36,7 @@ const EmpAdd = () => {
       <div className="row">
         <div className="offset-lg-3 col-lg-6">
           <form className="container" onSubmit={handlesubmit}>
-            <div className="card mt-20" style={{ textAlign: "left" }}>
+            <div className="card mt-2" style={{ textAlign: "left" }}>
               <div className="card-title">
                 <h2 className="text-2xl font-semibold mt-4 ml-6">
                   Add Employee{" "}
