@@ -1,11 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
-
+  
   const [Employee, setEmployee] = useState([]);
+  
+  const LoadDelete = useCallback((id) => {
+    axios
+      .get("http://localhost:8080/delete/" + id)
+      .then((response) => response.data)
+      .then((res) => {
+        console.log(res);
+      });
+  });
 
   useEffect(() => {
     axios
@@ -15,7 +24,7 @@ function Home() {
         // console.log(res);
         setEmployee(res);
       });
-  }, []);
+  }, [LoadDelete]);
 
   const LoadEdit = (id) => {
     axios
@@ -23,14 +32,6 @@ function Home() {
       .then((response) => response.data)
       .then((resp) => {
         navigate(`/edit`, { state: resp });
-      });
-  };
-  const LoadDelete = (id) => {
-    axios
-      .get("http://localhost:8080/delete/" + id)
-      .then((response) => response.data)
-      .then((res) => {
-        console.log(res);
       });
   };
 

@@ -38,8 +38,8 @@ const EmpEdit = () => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="form-group">
-                      <label>ID</label>
-                      <input
+                      {/* <label>ID</label> */}
+                      <input type="hidden"
                         value={location.state.id}
                         disabled="disabled"
                         className="form-control"
