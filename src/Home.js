@@ -6,6 +6,8 @@ function Home() {
   const navigate = useNavigate();
 
   const [Employee, setEmployee] = useState([]);
+  const [state, setState] = useState(true);
+
 
   const LoadDelete = ((id) => {
     axios
@@ -13,7 +15,9 @@ function Home() {
       .then((response) => response.data)
       .then((res) => {
         console.log(res);
+        
       });
+      setState(false)
   });
 
   useEffect(() => {
@@ -24,7 +28,8 @@ function Home() {
         // console.log(res);
         setEmployee(res);
       });
-  }, []);
+      setState(true)
+  }, [state]);
 
   const LoadEdit = (id) => {
     axios
